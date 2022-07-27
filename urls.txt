@@ -1,3 +1,3 @@
 [URL01] = https://github.com/umaryusufkd/cdond-c3-projectstarter
 
-[URL02] = 
+[URL02] = https://d6d3uqnsiyxtl.cloudfront.net/#/employees
