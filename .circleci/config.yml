@@ -29,12 +29,17 @@ commands:
       - run:
           name: Revert migrations
           # Add when this will run
-          when: on_fail
           command: |
-           cd ~/project/backend
-            npm install
-            npm run build
-            npm run migrations:revert
+            # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
+            SUCCESS=$(curl --insecure  https://kvdb.io/NBgM9V5hrof4HPa6ZKVUSq/migration_<< parameters.workflow-id >>)
+            #logic to revert database state
+            if(( $SUCCESS==1 )); 
+            then
+              cd ~/project/backend
+              npm install
+            #  Add revert code here. You can find this in the Getting Started section.
+              npm run migration:revert
+            fi
             
 jobs:
   build-frontend:
@@ -376,7 +381,7 @@ jobs:
           name: Frontend smoke test.
           command: |
             # your code here
-             export URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-${AWS_DEFAULT_REGION}.amazonaws.com/#/employees"            
+            export URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-${AWS_DEFAULT_REGION}.amazonaws.com/#/employees"            
             echo $URL
             if curl ${URL} | grep "Welcome"; then return 0; else return 1; fi
       # Here's where you will add some code to rollback on failure  
