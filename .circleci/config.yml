@@ -206,6 +206,7 @@ jobs:
             cat backend/.env
 
             cd .circleci/ansible
+            cat invetory.txt
             ansible-playbook -i inventory.txt configure-server.yml
       - persist_to_workspace:
           root: ~/
