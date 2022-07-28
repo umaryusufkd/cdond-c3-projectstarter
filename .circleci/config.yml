@@ -169,6 +169,7 @@ jobs:
             echo $(aws cloudformation describe-stacks --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7} \
             --query "Stacks[0].Outputs[?OutputKey=='EC2PublicIPAddress'].OutputValue" --output text) >> ~/project/.circleci/ansible/inventory.txt
             cat ~/project/.circleci/ansible/inventory.txt
+            sudo chmod 744 ~/project/.circleci/ansible/inventory.txt
       - persist_to_workspace:
           root: ~/
           paths:
