@@ -208,6 +208,7 @@ jobs:
 
             cd .circleci/ansible
             cat inventory.txt
+            chmod 744 inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
       - persist_to_workspace:
           root: ~/
