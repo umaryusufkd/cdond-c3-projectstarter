@@ -396,9 +396,9 @@ jobs:
               if [[ "${CIRCLE_WORKFLOW_ID:0:7}" =~ "${OldWorkflowID}" ]]
               then
                 echo $OldWorkflowID ${CIRCLE_WORKFLOW_ID:0:7}
-                # aws s3 rm "s3://udapeople-${OldWorkflowID}" --recursive
-                # aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkflowID}"
-                # aws cloudformation delete-stack --stack-name "udapeople-frontend-${OldWorkflowID}"
+                aws s3 rm "s3://udapeople-${OldWorkflowID}" --recursive
+                aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkflowID}"
+                aws cloudformation delete-stack --stack-name "udapeople-frontend-${OldWorkflowID}"
               else
                 return 1
               fi
@@ -409,7 +409,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-           fingerprints: ["62:aa:0b:b9:68:11:ac:66:03:7b:cf:d0:e7:f8:e9:a8"]
+          fingerprints: ["62:aa:0b:b9:68:11:ac:66:03:7b:cf:d0:e7:f8:e9:a8"]
       - run:
           name: Install dependencies
           command: |
