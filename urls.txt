@@ -1,4 +1,6 @@
 [URL01] = https://github.com/umaryusufkd/cdond-c3-projectstarter
 
-[URL02] = http://udapeople-d1788ca.s3-website-us-east-1.amazonaws.com/#/employees
+[URL02] = http://udapeople-d001962.s3-website-us-east-1.amazonaws.com/#/employees
+
+[URL03] = http://d3dkqbt1jfpfsx.cloudfront.net/#/employees
 
